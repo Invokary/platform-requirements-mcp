@@ -1,0 +1,1080 @@
+{
+  "name": "Invokary Platform Requirements",
+  "description": "Directory and registry requirements for MCP connectors and plugins on Claude, ChatGPT, Cursor and the Official MCP Registry, each with its sources, evidence label and the date it was last checked, and a dated log of platform changes.",
+  "schemaVersion": "1.0.0",
+  "dateModified": "2026-10-04",
+  "url": "https://invokary.com/platforms",
+  "license": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "attribution": "Invokary, https://invokary.com/platforms",
+  "platforms": [
+    {
+      "id": "claude",
+      "name": "Claude",
+      "vendor": "Anthropic",
+      "surfaceName": "Claude Connectors Directory",
+      "url": "https://invokary.com/platforms/claude"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "vendor": "OpenAI",
+      "surfaceName": "ChatGPT Plugins Directory",
+      "url": "https://invokary.com/platforms/chatgpt"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "vendor": "Anysphere",
+      "surfaceName": "Cursor Marketplace",
+      "url": "https://invokary.com/platforms/cursor"
+    },
+    {
+      "id": "mcp-registry",
+      "name": "MCP Registry",
+      "vendor": "Model Context Protocol",
+      "surfaceName": "Official MCP Registry",
+      "url": "https://invokary.com/platforms/mcp-registry"
+    }
+  ],
+  "facts": [
+    {
+      "id": "claude.portal",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors",
+        "claude-plugins"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "Anthropic opened its directory submission portal, for plugins and MCP connectors, on September 25, 2026.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Anthropic, September 25, 2026: Build plugins for Claude with the directory submission portal",
+          "url": "https://claude.com/blog/build-plugins-for-claude",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Publish to the directory",
+          "url": "https://claude.com/docs/directory/publish",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.portal"
+    },
+    {
+      "id": "claude.submission-paths",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors",
+        "claude-plugins"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "The portal accepts two kinds of submission: an MCP connector, given as a remote server URL and listed in the Connectors Directory, or a plugin bundle hosted on GitHub and listed in the Claude plugin directory.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Anthropic, September 25, 2026: Build plugins for Claude with the directory submission portal",
+          "url": "https://claude.com/blog/build-plugins-for-claude",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Publish to the directory",
+          "url": "https://claude.com/docs/directory/publish",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Submit a connector to the directory",
+          "url": "https://claude.com/docs/connectors/building/submission",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Plugin pre-submission checklist",
+          "url": "https://claude.com/docs/plugins/pre-submission-checklist",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.submission-paths"
+    },
+    {
+      "id": "claude.automated-checks",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors",
+        "claude-plugins"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "Plugin and connector submissions go through automated checks and a safety scan.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Anthropic, September 25, 2026: Build plugins for Claude with the directory submission portal",
+          "url": "https://claude.com/blog/build-plugins-for-claude",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Publish to the directory",
+          "url": "https://claude.com/docs/directory/publish",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.automated-checks"
+    },
+    {
+      "id": "claude.review-status",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors",
+        "claude-plugins"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "Plugin and connector publishers see each submission's review status in the developer portal, and the changes Anthropic asks for.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Anthropic, September 25, 2026: Build plugins for Claude with the directory submission portal",
+          "url": "https://claude.com/blog/build-plugins-for-claude",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Track your directory submission",
+          "url": "https://claude.com/docs/directory/submission-status",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.review-status"
+    },
+    {
+      "id": "claude.publish-timing",
+      "platform": "claude",
+      "productSurface": [
+        "claude-plugins"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "Once a plugin version passes review, you select Publish. By default an Anthropic reviewer then publishes it, and Anthropic can let later versions publish automatically.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Submit your plugin",
+          "url": "https://claude.com/docs/plugins/submit",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Anthropic, September 25, 2026: Build plugins for Claude with the directory submission portal",
+          "url": "https://claude.com/blog/build-plugins-for-claude",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.publish-timing"
+    },
+    {
+      "id": "claude.eligibility",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors",
+        "claude-plugins"
+      ],
+      "category": "eligibility",
+      "categoryLabel": "Who can submit",
+      "text": "Plugins and MCP connectors have the same submitter rules: Pro, Max, Team and Enterprise plans can submit; free accounts can't. On Team and Enterprise an Owner submits, and on Enterprise an Owner can also grant the Directory permission to other members.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Publish to the directory",
+          "url": "https://claude.com/docs/directory/publish",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Submit a connector to the directory",
+          "url": "https://claude.com/docs/connectors/building/submission",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.eligibility"
+    },
+    {
+      "id": "claude.tiers",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors"
+      ],
+      "category": "tiers",
+      "categoryLabel": "Listing tiers",
+      "text": "New Connectors Directory listings carry the Community label. Anthropic may escalate a connector to Verified review on its own: there is no application, and Verified reviewers run a functional test of each tool.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Connector verification",
+          "url": "https://claude.com/docs/connectors/verification",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Connector pre-submission checklist",
+          "url": "https://claude.com/docs/connectors/building/review-criteria",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.tiers"
+    },
+    {
+      "id": "claude.analytics",
+      "platform": "claude",
+      "productSurface": [
+        "claude-plugins"
+      ],
+      "category": "analytics",
+      "categoryLabel": "After launch",
+      "text": "After launch, plugin publishers see installs by product surface and version, listing views, and the searches that lead to a listing.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Anthropic, September 25, 2026: Build plugins for Claude with the directory submission portal",
+          "url": "https://claude.com/blog/build-plugins-for-claude",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.analytics"
+    },
+    {
+      "id": "claude.extensions",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors",
+        "claude-plugins"
+      ],
+      "category": "extensions",
+      "categoryLabel": "Extensions",
+      "text": "Claude supports two MCP extensions for connectors and the plugins built on them: MCP Apps, for interactive UI inside chat, and Enterprise Managed Auth, for zero-touch OAuth for enterprise users.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Anthropic, September 25, 2026: Build plugins for Claude with the directory submission portal",
+          "url": "https://claude.com/blog/build-plugins-for-claude",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Claude docs: Submit a connector to the directory",
+          "url": "https://claude.com/docs/connectors/building/submission",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.extensions"
+    },
+    {
+      "id": "claude.auth-options",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors"
+      ],
+      "category": "auth",
+      "categoryLabel": "Auth",
+      "text": "Claude connects to a remote MCP server with OAuth 2.0, where each user signs in, with a static API key or bearer token that an organization Owner enters once (in beta, for a limited set of organizations), or with no authentication.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Authentication for connectors",
+          "url": "https://claude.com/docs/connectors/building/authentication",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.auth-options"
+    },
+    {
+      "id": "claude.rule-annotations",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "Every tool has a title and the applicable hint: readOnlyHint for read-only tools, destructiveHint for tools that modify or delete data.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Connector pre-submission checklist",
+          "url": "https://claude.com/docs/connectors/building/review-criteria",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.rule-annotations"
+    },
+    {
+      "id": "claude.rule-name-length",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "Tool names are 64 characters or fewer.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Connector pre-submission checklist",
+          "url": "https://claude.com/docs/connectors/building/review-criteria",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.rule-name-length"
+    },
+    {
+      "id": "claude.rule-descriptions",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "Tool descriptions say what the tool does and when to use it. They must not tell Claude how to behave.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Connector pre-submission checklist",
+          "url": "https://claude.com/docs/connectors/building/review-criteria",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.rule-descriptions"
+    },
+    {
+      "id": "claude.rule-split-tools",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "A single tool that mixes safe and unsafe HTTP methods, such as a catch-all api_request tool, is rejected. Read and write actions go in separate tools.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Connector pre-submission checklist",
+          "url": "https://claude.com/docs/connectors/building/review-criteria",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.rule-split-tools"
+    },
+    {
+      "id": "claude.rule-test-credentials",
+      "platform": "claude",
+      "productSurface": [
+        "claude-connectors"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "A connector submission includes test credentials for a fully populated account.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Connector pre-submission checklist",
+          "url": "https://claude.com/docs/connectors/building/review-criteria",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.rule-test-credentials"
+    },
+    {
+      "id": "claude.rule-first-submitter",
+      "platform": "claude",
+      "productSurface": [
+        "claude-plugins"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "For a plugin bundle, the first organization to submit a repository folder holds that listing.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Claude docs: Publish to the directory",
+          "url": "https://claude.com/docs/directory/publish",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/claude#claude.rule-first-submitter"
+    },
+    {
+      "id": "chatgpt.domain-token",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "A domain verification token is served at /.well-known/openai-apps-challenge on the MCP server's host or a parent host.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.domain-token"
+    },
+    {
+      "id": "chatgpt.identity",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "eligibility",
+      "categoryLabel": "Who can submit",
+      "text": "The submitter has a verified individual or business identity.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.identity"
+    },
+    {
+      "id": "chatgpt.apps-management",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "eligibility",
+      "categoryLabel": "Who can submit",
+      "text": "The submitter has Apps Management write access.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.apps-management"
+    },
+    {
+      "id": "chatgpt.test-cases",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "The submission includes exactly five positive and three negative test cases.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Plugin submission errors",
+          "url": "https://developers.openai.com/plugins/deploy/submission-errors",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.test-cases"
+    },
+    {
+      "id": "chatgpt.demo",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "The submission includes a demo recording.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Plugin submission errors",
+          "url": "https://developers.openai.com/plugins/deploy/submission-errors",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.demo"
+    },
+    {
+      "id": "chatgpt.release-notes",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "The submission includes release notes that summarize the version being submitted and what changed.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "OpenAI Developers: Plugin submission errors",
+          "url": "https://developers.openai.com/plugins/deploy/submission-errors",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.release-notes"
+    },
+    {
+      "id": "chatgpt.listing-urls",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "The submission lists website, support, privacy policy and terms of service URLs.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.listing-urls"
+    },
+    {
+      "id": "chatgpt.reviewer-credentials",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "Reviewer test credentials work without MFA, SMS or email confirmation, or private-network access.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.reviewer-credentials"
+    },
+    {
+      "id": "chatgpt.annotations",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "Every MCP tool sets readOnlyHint, openWorldHint and destructiveHint to match what it does, with a justification for each.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Plugin submission errors",
+          "url": "https://developers.openai.com/plugins/deploy/submission-errors",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "OpenAI Developers: Remote MCP server review requirements",
+          "url": "https://developers.openai.com/plugins/deploy/app-review",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.annotations"
+    },
+    {
+      "id": "chatgpt.userinfo",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "auth",
+      "categoryLabel": "Auth",
+      "text": "To restrict access by workspace domain, the OAuth server has a UserInfo endpoint that returns email_verified, and it offers the openid and email scopes.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Authentication",
+          "url": "https://developers.openai.com/plugins/build/auth",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.userinfo"
+    },
+    {
+      "id": "chatgpt.eu-residency",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "limits",
+      "categoryLabel": "Limits",
+      "text": "Projects with EU data residency cannot currently submit MCP plugins.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Remote MCP server review requirements",
+          "url": "https://developers.openai.com/plugins/deploy/app-review",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.eu-residency"
+    },
+    {
+      "id": "chatgpt.codex",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "distribution",
+      "categoryLabel": "Distribution",
+      "text": "Published plugins appear in the Plugins Directory shared by ChatGPT and Codex.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "OpenAI Developers: Remote MCP server review requirements",
+          "url": "https://developers.openai.com/plugins/deploy/app-review",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.codex"
+    },
+    {
+      "id": "chatgpt.tool-refetch",
+      "platform": "chatgpt",
+      "productSurface": [
+        "chatgpt",
+        "codex"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "After publication, OpenAI periodically fetches your MCP tools. Deleted tools are removed as soon as a scan finds them, and changed tools go live once they pass automated checks.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "OpenAI Developers: Remote MCP server review requirements",
+          "url": "https://developers.openai.com/plugins/deploy/app-review",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/chatgpt#chatgpt.tool-refetch"
+    },
+    {
+      "id": "cursor.submission",
+      "platform": "cursor",
+      "productSurface": [
+        "cursor-marketplace"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "Plugins are submitted at cursor.com/marketplace/publish from a public Git repository. Every plugin is manually reviewed before it is listed.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Cursor Docs: Plugins reference",
+          "url": "https://cursor.com/docs/reference/plugins",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Cursor Docs: Plugins",
+          "url": "https://cursor.com/docs/plugins",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/cursor#cursor.submission"
+    },
+    {
+      "id": "cursor.manifest",
+      "platform": "cursor",
+      "productSurface": [
+        "cursor-marketplace"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "Cursor accepts a root plugin.json (the Agent Plugins standard) or a .cursor-plugin/plugin.json (a Cursor Plugin). Plugin names are lowercase kebab-case.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Cursor Docs: Plugins",
+          "url": "https://cursor.com/docs/plugins",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "Cursor Docs: Plugins reference",
+          "url": "https://cursor.com/docs/reference/plugins",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/cursor#cursor.manifest"
+    },
+    {
+      "id": "cursor.licenses",
+      "platform": "cursor",
+      "productSurface": [
+        "cursor-marketplace"
+      ],
+      "category": "rules",
+      "categoryLabel": "Review rules",
+      "text": "Open-source components must use permissive licenses, such as MIT, BSD or Apache 2.0. GPL, AGPL and LGPL are not allowed.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Cursor Marketplace Publisher Terms",
+          "url": "https://cursor.com/marketplace-publisher-terms",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/cursor#cursor.licenses"
+    },
+    {
+      "id": "cursor.team-marketplaces",
+      "platform": "cursor",
+      "productSurface": [
+        "cursor-marketplace"
+      ],
+      "category": "distribution",
+      "categoryLabel": "Distribution",
+      "text": "Team marketplaces are available on the Teams plan (one marketplace) and the Enterprise plan (unlimited).",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "Cursor Docs: Plugins",
+          "url": "https://cursor.com/docs/plugins",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/cursor#cursor.team-marketplaces"
+    },
+    {
+      "id": "mcp-registry.server-json",
+      "platform": "mcp-registry",
+      "productSurface": [
+        "mcp-registry"
+      ],
+      "category": "submission",
+      "categoryLabel": "Submission",
+      "text": "A remote server is published with a server.json whose remotes property lists its URL, and the server must be publicly accessible there.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "MCP Registry: Publishing remote servers",
+          "url": "https://modelcontextprotocol.io/registry/remote-servers",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/mcp-registry#mcp-registry.server-json"
+    },
+    {
+      "id": "mcp-registry.namespace",
+      "platform": "mcp-registry",
+      "productSurface": [
+        "mcp-registry"
+      ],
+      "category": "eligibility",
+      "categoryLabel": "Who can submit",
+      "text": "You authenticate the namespace you publish under: GitHub for io.github.* names, or DNS or HTTP for a domain you control.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "MCP Registry: How to authenticate when publishing",
+          "url": "https://modelcontextprotocol.io/registry/authentication",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/mcp-registry#mcp-registry.namespace"
+    },
+    {
+      "id": "mcp-registry.preview",
+      "platform": "mcp-registry",
+      "productSurface": [
+        "mcp-registry"
+      ],
+      "category": "limits",
+      "categoryLabel": "Limits",
+      "text": "The registry is in preview: breaking changes or data resets may happen before general availability.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "MCP Registry: Publishing remote servers",
+          "url": "https://modelcontextprotocol.io/registry/remote-servers",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "MCP Registry: How to authenticate when publishing",
+          "url": "https://modelcontextprotocol.io/registry/authentication",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms/mcp-registry#mcp-registry.preview"
+    },
+    {
+      "id": "ecosystem.mcp-2026-07-28",
+      "platform": "ecosystem",
+      "productSurface": [],
+      "category": "protocol",
+      "categoryLabel": "Protocol",
+      "text": "MCP 2026-07-28 removed sessions and the initialize handshake, made servers implement server/discover, and deprecated Dynamic Client Registration in favor of Client ID Metadata Documents. DCR still works for backward compatibility, for now. Servers built last year need work.",
+      "evidence": "V",
+      "sourceKind": "official",
+      "sources": [
+        {
+          "label": "MCP blog, July 28, 2026: The 2026-07-28 specification",
+          "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "MCP specification 2026-07-28: Key changes",
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
+          "accessed": "2026-10-04"
+        }
+      ],
+      "status": "verified",
+      "verifiedAt": "2026-10-04",
+      "verifiedBy": "founder",
+      "url": "https://invokary.com/platforms#ecosystem.mcp-2026-07-28"
+    }
+  ],
+  "changes": [
+    {
+      "slug": "chatgpt-plugins-2026-07",
+      "title": "ChatGPT apps are now plugins: submission changes",
+      "summary": "What OpenAI now asks for when you submit an MCP-backed ChatGPT plugin: domain verification, identity, test cases, release notes and a demo recording.",
+      "url": "https://invokary.com/platform-changes/chatgpt-plugins-2026-07",
+      "markdownUrl": "https://invokary.com/platform-changes/chatgpt-plugins-2026-07.md",
+      "published": "2026-09-28",
+      "updated": "2026-10-04",
+      "lastVerified": "2026-10-04",
+      "platforms": [
+        "chatgpt"
+      ],
+      "sources": [
+        {
+          "label": "OpenAI Developers: Submit plugins",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "OpenAI Developers: Plugin submission errors",
+          "url": "https://developers.openai.com/plugins/deploy/submission-errors",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "OpenAI Developers: Remote MCP server review requirements",
+          "url": "https://developers.openai.com/plugins/deploy/app-review",
+          "accessed": "2026-10-04"
+        },
+        {
+          "label": "sunpeak, July 2026: How to submit a ChatGPT app as a plugin",
+          "url": "https://sunpeak.ai/blogs/submit-chatgpt-app-as-plugin/",
+          "accessed": "2026-10-04"
+        }
+      ]
+    },
+    {
+      "slug": "claude-directory-portal-2026-09",
+      "title": "Claude portal launch: what changed (Sept 2026)",
+      "summary": "Anthropic opened its directory submission portal for plugins and MCP connectors on September 25, 2026: submission paths, scans, review and analytics.",
+      "url": "https://invokary.com/platform-changes/claude-directory-portal-2026-09",
+      "markdownUrl": "https://invokary.com/platform-changes/claude-directory-portal-2026-09.md",
+      "published": "2026-09-28",
+      "updated": "2026-10-04",
+      "lastVerified": "2026-09-27",
+      "platforms": [
+        "claude"
+      ],
+      "sources": [
+        {
+          "label": "Anthropic, September 25, 2026: Build plugins for Claude with the directory submission portal",
+          "url": "https://claude.com/blog/build-plugins-for-claude",
+          "accessed": "2026-09-27"
+        },
+        {
+          "label": "Anthropic, September 23, 2026: Claude Marketplace",
+          "url": "https://claude.com/blog/claude-marketplace",
+          "accessed": "2026-09-27"
+        },
+        {
+          "label": "Claude docs: Publish to the directory",
+          "url": "https://claude.com/docs/directory/publish",
+          "accessed": "2026-09-27"
+        },
+        {
+          "label": "Claude docs: Submit your plugin",
+          "url": "https://claude.com/docs/plugins/submit",
+          "accessed": "2026-09-27"
+        }
+      ]
+    }
+  ],
+  "retired": []
+}

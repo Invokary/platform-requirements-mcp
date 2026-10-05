@@ -1,0 +1,1294 @@
+{
+  "endpoint": "https://mcp.invokary.com/mcp",
+  "tools": [
+    {
+      "name": "list_platforms",
+      "title": "List platforms",
+      "description": "Lists the platforms in the Platform Requirements dataset (Claude, ChatGPT, Cursor and the Official MCP Registry): each one's directory, vendor, number of requirements, topics and latest check date. Use it to see what the dataset covers and which ids the other tools take.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {}
+      },
+      "outputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "vendor": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "surfaceName": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "requirementCount": {
+                  "type": "number"
+                },
+                "topics": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "requirementCount": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "label",
+                      "requirementCount"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "lastChecked": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "vendor",
+                "surfaceName",
+                "url",
+                "requirementCount",
+                "topics"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "protocolRequirementCount": {
+            "type": "number"
+          },
+          "citation": {
+            "type": "object",
+            "properties": {
+              "dataset": {
+                "type": "string"
+              },
+              "schemaVersion": {
+                "type": "string"
+              },
+              "dateModified": {
+                "type": "string"
+              },
+              "license": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              },
+              "attribution": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "dataset",
+              "schemaVersion",
+              "dateModified",
+              "license",
+              "attribution",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "platforms",
+          "protocolRequirementCount",
+          "citation"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "List platforms",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_platform_requirements",
+      "title": "Get a platform's requirements",
+      "description": "Returns what one platform requires before it lists an MCP connector or plugin, each requirement with its sources, evidence label and the date it was last checked. Narrow the list to one topic (category) or one product surface. Platforms: claude (Claude), chatgpt (ChatGPT), cursor (Cursor), mcp-registry (MCP Registry), ecosystem (MCP specification).",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "enum": [
+              "claude",
+              "chatgpt",
+              "cursor",
+              "mcp-registry",
+              "ecosystem"
+            ],
+            "description": "The platform id."
+          },
+          "category": {
+            "description": "Only requirements on this topic.",
+            "type": "string",
+            "enum": [
+              "submission",
+              "eligibility",
+              "tiers",
+              "analytics",
+              "extensions",
+              "auth",
+              "rules",
+              "limits",
+              "distribution",
+              "protocol"
+            ]
+          },
+          "productSurface": {
+            "description": "Only requirements that hold for this product surface, e.g. claude-connectors or claude-plugins.",
+            "type": "string",
+            "enum": [
+              "claude-connectors",
+              "claude-plugins",
+              "chatgpt",
+              "codex",
+              "cursor-marketplace",
+              "mcp-registry"
+            ]
+          }
+        },
+        "required": [
+          "platform"
+        ]
+      },
+      "outputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "platform": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "vendor": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "surfaceName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "vendor",
+                  "surfaceName",
+                  "url"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "platform": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "productSurface": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "category": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "categoryLabel": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidence": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sourceKind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sources": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "accessed": {
+                        "type": "string",
+                        "format": "date",
+                        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "url",
+                      "accessed"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "verified",
+                    "conflict"
+                  ]
+                },
+                "conflictNote": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "verifiedAt": {
+                  "type": "string",
+                  "format": "date",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                },
+                "verifiedBy": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "id",
+                "platform",
+                "productSurface",
+                "category",
+                "categoryLabel",
+                "text",
+                "evidence",
+                "sourceKind",
+                "sources",
+                "status",
+                "verifiedAt",
+                "verifiedBy",
+                "url"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "citation": {
+            "type": "object",
+            "properties": {
+              "dataset": {
+                "type": "string"
+              },
+              "schemaVersion": {
+                "type": "string"
+              },
+              "dateModified": {
+                "type": "string"
+              },
+              "license": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              },
+              "attribution": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "dataset",
+              "schemaVersion",
+              "dateModified",
+              "license",
+              "attribution",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "platform",
+          "requirements",
+          "citation"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Get a platform's requirements",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_requirement",
+      "title": "Get one requirement",
+      "description": "Returns one requirement by its id, for example claude.rule-annotations, with its sources and the date it was last checked. For a retired id it returns the retirement date and the requirement that replaced it.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "The requirement id, as returned by the other tools."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "outputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "requirement": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "platform": {
+                "type": "string",
+                "minLength": 1
+              },
+              "productSurface": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "category": {
+                "type": "string",
+                "minLength": 1
+              },
+              "categoryLabel": {
+                "type": "string",
+                "minLength": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceKind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sources": {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "accessed": {
+                      "type": "string",
+                      "format": "date",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "url",
+                    "accessed"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "verified",
+                  "conflict"
+                ]
+              },
+              "conflictNote": {
+                "type": "string",
+                "minLength": 1
+              },
+              "verifiedAt": {
+                "type": "string",
+                "format": "date",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+              },
+              "verifiedBy": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "id",
+              "platform",
+              "productSurface",
+              "category",
+              "categoryLabel",
+              "text",
+              "evidence",
+              "sourceKind",
+              "sources",
+              "status",
+              "verifiedAt",
+              "verifiedBy",
+              "url"
+            ],
+            "additionalProperties": false
+          },
+          "retired": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "retiredAt": {
+                "type": "string",
+                "format": "date",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+              },
+              "replacedBy": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "retiredAt"
+            ],
+            "additionalProperties": false
+          },
+          "replacement": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "platform": {
+                "type": "string",
+                "minLength": 1
+              },
+              "productSurface": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "category": {
+                "type": "string",
+                "minLength": 1
+              },
+              "categoryLabel": {
+                "type": "string",
+                "minLength": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceKind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sources": {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "accessed": {
+                      "type": "string",
+                      "format": "date",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "url",
+                    "accessed"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "verified",
+                  "conflict"
+                ]
+              },
+              "conflictNote": {
+                "type": "string",
+                "minLength": 1
+              },
+              "verifiedAt": {
+                "type": "string",
+                "format": "date",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+              },
+              "verifiedBy": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "id",
+              "platform",
+              "productSurface",
+              "category",
+              "categoryLabel",
+              "text",
+              "evidence",
+              "sourceKind",
+              "sources",
+              "status",
+              "verifiedAt",
+              "verifiedBy",
+              "url"
+            ],
+            "additionalProperties": false
+          },
+          "citation": {
+            "type": "object",
+            "properties": {
+              "dataset": {
+                "type": "string"
+              },
+              "schemaVersion": {
+                "type": "string"
+              },
+              "dateModified": {
+                "type": "string"
+              },
+              "license": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              },
+              "attribution": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "dataset",
+              "schemaVersion",
+              "dateModified",
+              "license",
+              "attribution",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "citation"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Get one requirement",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "compare_platforms",
+      "title": "Compare platforms",
+      "description": "Sets the requirements of two or more platforms side by side, grouped by topic, to show where they differ, for example on authentication or on what a submission needs. Leave platforms out to compare all four directories.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "platforms": {
+            "description": "Two or more platform ids. Default: claude, chatgpt, cursor, mcp-registry.",
+            "minItems": 2,
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "claude",
+                "chatgpt",
+                "cursor",
+                "mcp-registry",
+                "ecosystem"
+              ]
+            }
+          },
+          "category": {
+            "description": "Only this topic.",
+            "type": "string",
+            "enum": [
+              "submission",
+              "eligibility",
+              "tiers",
+              "analytics",
+              "extensions",
+              "auth",
+              "rules",
+              "limits",
+              "distribution",
+              "protocol"
+            ]
+          }
+        }
+      },
+      "outputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "requirements": {
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        },
+                        "verifiedAt": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "text",
+                        "verifiedAt",
+                        "url"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "requirements"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "citation": {
+            "type": "object",
+            "properties": {
+              "dataset": {
+                "type": "string"
+              },
+              "schemaVersion": {
+                "type": "string"
+              },
+              "dateModified": {
+                "type": "string"
+              },
+              "license": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              },
+              "attribution": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "dataset",
+              "schemaVersion",
+              "dateModified",
+              "license",
+              "attribution",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "platforms",
+          "topics",
+          "citation"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Compare platforms",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "search_requirements",
+      "title": "Search requirements",
+      "description": "Finds requirements whose text matches keywords or a question, such as \"privacy policy\", \"OAuth\" or \"test cases\", across every platform or within one. Returns up to 10 matches, best first, with their sources and check dates.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 200,
+            "description": "Keywords or a question."
+          },
+          "platform": {
+            "description": "Only this platform.",
+            "type": "string",
+            "enum": [
+              "claude",
+              "chatgpt",
+              "cursor",
+              "mcp-registry",
+              "ecosystem"
+            ]
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "outputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "platform": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "productSurface": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "category": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "categoryLabel": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidence": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sourceKind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sources": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "accessed": {
+                        "type": "string",
+                        "format": "date",
+                        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "url",
+                      "accessed"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "verified",
+                    "conflict"
+                  ]
+                },
+                "conflictNote": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "verifiedAt": {
+                  "type": "string",
+                  "format": "date",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                },
+                "verifiedBy": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "id",
+                "platform",
+                "productSurface",
+                "category",
+                "categoryLabel",
+                "text",
+                "evidence",
+                "sourceKind",
+                "sources",
+                "status",
+                "verifiedAt",
+                "verifiedBy",
+                "url"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "citation": {
+            "type": "object",
+            "properties": {
+              "dataset": {
+                "type": "string"
+              },
+              "schemaVersion": {
+                "type": "string"
+              },
+              "dateModified": {
+                "type": "string"
+              },
+              "license": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              },
+              "attribution": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "dataset",
+              "schemaVersion",
+              "dateModified",
+              "license",
+              "attribution",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "query",
+          "requirements",
+          "citation"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Search requirements",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_platform_changes",
+      "title": "List platform changes",
+      "description": "Lists Invokary's dated notes on changes to these platforms' submission rules, most recently updated first, optionally for one platform or updated on or after a date. Each note links to its full text.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "platform": {
+            "description": "Only notes about this platform.",
+            "type": "string",
+            "enum": [
+              "claude",
+              "chatgpt",
+              "cursor",
+              "mcp-registry"
+            ]
+          },
+          "since": {
+            "description": "Only notes updated on or after this date (YYYY-MM-DD).",
+            "type": "string",
+            "format": "date",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+          }
+        }
+      },
+      "outputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slug": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "summary": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "markdownUrl": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "published": {
+                  "type": "string",
+                  "format": "date",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                },
+                "updated": {
+                  "type": "string",
+                  "format": "date",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                },
+                "lastVerified": {
+                  "type": "string",
+                  "format": "date",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                },
+                "platforms": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "sources": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "accessed": {
+                        "type": "string",
+                        "format": "date",
+                        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "url",
+                      "accessed"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "slug",
+                "title",
+                "summary",
+                "url",
+                "markdownUrl",
+                "published",
+                "updated",
+                "lastVerified",
+                "platforms",
+                "sources"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "citation": {
+            "type": "object",
+            "properties": {
+              "dataset": {
+                "type": "string"
+              },
+              "schemaVersion": {
+                "type": "string"
+              },
+              "dateModified": {
+                "type": "string"
+              },
+              "license": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "additionalProperties": false
+              },
+              "attribution": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "dataset",
+              "schemaVersion",
+              "dateModified",
+              "license",
+              "attribution",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "changes",
+          "citation"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "List platform changes",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ]
+}

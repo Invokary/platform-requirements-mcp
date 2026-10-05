@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "platform-requirements-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-25",
+  // The server is only reachable on its custom domain, never on a workers.dev or preview URL.
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "mcp.invokary.com", "custom_domain": true }],
+  "vars": {
+    // Where a browser opening the server's root is sent.
+    "HOME_URL": "https://invokary.com/open-source"
+    // OPENAI_APPS_CHALLENGE (the ChatGPT domain verification token) is added in the Cloudflare
+    // dashboard as a Secret, not here and not as a plain variable: each deploy replaces plain
+    // variables with this list, but keeps secrets.
+  },
+  // Usage events: tool, client name and version, protocol, outcome and latency. Never IP addresses,
+  // user agents or tool arguments (README, Privacy).
+  "analytics_engine_datasets": [{ "binding": "EVENTS", "dataset": "platform_requirements_mcp" }],
+  // Per-client request limit. Cloudflare counts by IP address in memory; nothing is stored.
+  "ratelimits": [{ "name": "RATE_LIMITER", "namespace_id": "1001", "simple": { "limit": 120, "period": 60 } }],
+  "observability": { "enabled": true, "head_sampling_rate": 0.1 }
+}

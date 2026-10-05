@@ -1,0 +1,36 @@
+name: Sync data
+
+# Copies the Platform Requirements dataset from invokary.com once a day. A new version is committed only
+# when it validates and every test passes with it; the push then redeploys the server through Workers
+# Builds. tools.json is regenerated too, since the tools' platform and topic lists come from the data.
+
+on:
+  schedule:
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run data:sync
+      - run: npm run tools:json
+      - run: npm test
+      - name: Commit
+        run: |
+          set -euo pipefail
+          git add data/platform-requirements.json tools.json
+          if git diff --cached --quiet; then echo "No change."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync the dataset from invokary.com ($(date -u +%Y-%m-%d))"
+          git push origin HEAD

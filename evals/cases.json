@@ -1,0 +1,48 @@
+{
+  "positive": [
+    {
+      "prompt": "What does Claude check before it lists my MCP connector in the Connectors Directory?",
+      "tool": "get_platform_requirements",
+      "arguments": { "platform": "claude", "productSurface": "claude-connectors" },
+      "expect": { "ids": ["claude.rule-annotations", "claude.rule-name-length", "claude.auth-options"], "text": ["readOnlyHint"] }
+    },
+    {
+      "prompt": "How many test cases does OpenAI want with a ChatGPT plugin submission?",
+      "tool": "search_requirements",
+      "arguments": { "query": "test cases", "platform": "chatgpt" },
+      "expect": { "ids": ["chatgpt.test-cases"], "text": ["five positive and three negative"] }
+    },
+    {
+      "prompt": "Compare how Claude and ChatGPT handle authentication for remote MCP servers.",
+      "tool": "compare_platforms",
+      "arguments": { "platforms": ["claude", "chatgpt"], "category": "auth" },
+      "expect": { "ids": ["claude.auth-options", "chatgpt.userinfo"], "text": ["OAuth"] }
+    },
+    {
+      "prompt": "What changed recently in how ChatGPT plugins are submitted?",
+      "tool": "list_platform_changes",
+      "arguments": { "platform": "chatgpt" },
+      "expect": { "ids": [], "text": ["ChatGPT apps are now plugins"] }
+    },
+    {
+      "prompt": "Can I publish a GPL-licensed plugin on the Cursor Marketplace?",
+      "tool": "search_requirements",
+      "arguments": { "query": "license", "platform": "cursor" },
+      "expect": { "ids": ["cursor.licenses"], "text": ["GPL, AGPL and LGPL are not allowed"] }
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "What's the weather in Mumbai tomorrow?",
+      "why": "Unrelated to connector or plugin listing requirements; the server holds no weather data."
+    },
+    {
+      "prompt": "Write a SQL query that returns every customer who ordered last month.",
+      "why": "A general coding task. The server answers what directories require, not how to write code."
+    },
+    {
+      "prompt": "How do I cancel my ChatGPT Plus subscription?",
+      "why": "Names a platform the dataset covers, but asks about a consumer subscription, not about listing a connector or plugin."
+    }
+  ]
+}

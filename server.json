@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.invokary/platform-requirements",
+  "title": "Invokary Platform Requirements",
+  "description": "What Claude, ChatGPT, Cursor and the MCP Registry require to list an MCP connector or plugin.",
+  "version": "1.0.0",
+  "websiteUrl": "https://invokary.com/open-source",
+  "repository": {
+    "url": "https://github.com/Invokary/platform-requirements-mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://invokary.com/logo.png",
+      "mimeType": "image/png",
+      "sizes": ["512x512"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.invokary.com/mcp"
+    }
+  ]
+}
