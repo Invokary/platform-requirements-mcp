@@ -6,6 +6,8 @@ A read-only MCP server for what Claude, ChatGPT, Cursor and the Official MCP Reg
 
 Maintained by [Invokary](https://invokary.com/open-source). The data is the [Platform Requirements dataset](https://invokary.com/platforms), published under CC BY 4.0.
 
+**Listed in:** the [Official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/com.invokary%2Fplatform-requirements/versions/latest) as `com.invokary/platform-requirements`, Claude's Connectors Directory (Community), and [Smithery](https://smithery.ai/servers/invokary/platform-requirements).
+
 ## Connect
 
 The server needs no account, key or sign-in. Add it by URL:
