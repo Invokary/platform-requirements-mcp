@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "platform-requirements": {
+      "type": "http",
+      "url": "https://mcp.invokary.com/mcp"
+    }
+  }
+}

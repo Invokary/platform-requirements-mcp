@@ -1,0 +1,15 @@
+{
+  "name": "invokary-platform-requirements",
+  "displayName": "Invokary Platform Requirements",
+  "version": "1.0.0",
+  "description": "Look up what Claude, ChatGPT, Cursor and the MCP Registry require before they list an MCP connector or plugin, with sources and check dates.",
+  "author": {
+    "name": "Invokary",
+    "email": "hello@invokary.com",
+    "url": "https://invokary.com"
+  },
+  "homepage": "https://invokary.com/open-source",
+  "repository": "https://github.com/Invokary/platform-requirements-mcp",
+  "license": "MIT",
+  "keywords": ["mcp", "connectors", "plugins", "claude", "chatgpt", "cursor", "mcp-registry", "requirements"]
+}
